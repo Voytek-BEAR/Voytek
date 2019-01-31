@@ -35,7 +35,7 @@ HelpMessageDialog::HelpMessageDialog(QWidget* parent, bool about) : QDialog(pare
     ui->setupUi(this);
     GUIUtil::restoreWindowGeometry("nHelpMessageDialogWindow", this->size(), this);
 
-    QString version = tr("Voytek BEAR") + " " + tr("Version 1.0.0-MAIN");
+    QString version = tr("Voytek BEAR") + " " + tr("Version 1.1.0-MAIN");
 /* On x86 add a bit specifier to the version so that users can distinguish between
      * 32 and 64 bit builds. On other architectures, 32/64 bit may be more ambigious.
      */
