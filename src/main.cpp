@@ -3089,6 +3089,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
                 return state.DoS(100, error("CheckBlock() : more than one coinstake"));
 	    
 	//Additional check against false PoS attack
+	if (chainActive.Tip()->nHeight > 80000) {
         // Check for coin age.
         // First try finding the previous transaction in database.
         CTransaction txPrev;
@@ -3110,6 +3111,7 @@ bool CheckBlock(const CBlock& block, CValidationState& state, bool fCheckPOW, bo
         LogPrintf("CheckBlock() : height=%d stake_tx_height=%d required_confirmations=%d got=%d\n", chainActive.Tip()->nHeight, pindex->nHeight, STAKE_MIN_CONF, chainActive.Tip()->nHeight - pindex->nHeight);
         if (chainActive.Tip()->nHeight - pindex->nHeight < STAKE_MIN_CONF)
             return state.DoS(100, error("CheckBlock() : stake under min. required confirmations"));
+	}
     }
 
     // ----------- swiftTX transaction scanning -----------
